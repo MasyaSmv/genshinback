@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @param $bonus
  *
  * @property int $id
- * @method static firstWhere(string $string, mixed $name)
  */
 class Weapon extends Model
 {
@@ -46,12 +45,12 @@ class Weapon extends Model
     protected $casts
         = [
             'name'        => 'string',
-            'description' => 'string',
+            'description' => 'text',
             'rarity'      => 'integer',
             'type'        => 'integer',
             'domain'      => 'string',
             'passive'     => 'string',
-            'bonus'       => 'string',
+            'bonus'       => 'text',
         ];
 
     /**
@@ -59,32 +58,7 @@ class Weapon extends Model
      */
     public $timestamps = false;
 
-    public const ATK_POWER        = 1;
 
-    public const PHYSICAL_DMG     = 2;
-
-    public const MASTERY_ELEMENTS = 3;
-
-    public const CRT_RATE         = 4;
-
-    public const CRT_DMG          = 5;
-
-    public const HP               = 6;
-
-    public const ENERGY_RECOVERY  = 7;
-
-    public const DEF              = 8;
-
-    public const SECONDARY_STAT   = [
-        self::ATK_POWER,
-        self::PHYSICAL_DMG,
-        self::MASTERY_ELEMENTS,
-        self::CRT_RATE,
-        self::CRT_DMG,
-        self::HP,
-        self::ENERGY_RECOVERY,
-        self::DEF,
-    ];
 
     public const ONE_HANDED_WEAPON = 1;
 

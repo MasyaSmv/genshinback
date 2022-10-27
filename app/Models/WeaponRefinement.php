@@ -18,6 +18,7 @@ class WeaponRefinement extends Model
     protected $fillable
         = [
             'weapon_id',
+            'refinement',
             'description',
         ];
 
@@ -27,7 +28,8 @@ class WeaponRefinement extends Model
     protected $casts
         = [
             'weapon_id'   => 'integer',
-            'description' => 'string',
+            'refinement' => 'string',
+            'description' => 'text',
         ];
 
     /**

@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(Hero::class);
+        //сначала материалы, потом оружие, тк оружие получает айдишники материалов
         $this->call(MaterialSeed::class);
+        $this->call(WeaponSeed::class);
     }
 }

@@ -16,7 +16,8 @@ class CreateWeaponRefinementsTable extends Migration
         Schema::create('weapon_refinements', function (Blueprint $table) {
             $table->id();
             $table->integer('weapon_id');
-            $table->string('description');
+            $table->string('refinement');
+            $table->text('description');
         });
     }
 

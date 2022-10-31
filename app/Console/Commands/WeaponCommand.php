@@ -3,17 +3,16 @@
 namespace App\Console\Commands;
 
 use App\Helpers\Weapon\WeaponSwitches;
-use App\Models\Material;
-use App\Models\Weapon;
-use App\Models\WeaponAscension;
-use App\Models\WeaponRefinement;
-use App\Models\WeaponStat;
-use Database\Seeders\MaterialSeed;
+use App\Models\Material\Material;
+use App\Models\Weapon\Weapon;
+use App\Models\Weapon\WeaponAscension;
+use App\Models\Weapon\WeaponRefinement;
+use App\Models\Weapon\WeaponStat;
 use Illuminate\Console\Command;
 
 class WeaponCommand extends Command
 {
-
+    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
      * The name and signature of the console command.
      *
@@ -45,7 +44,7 @@ class WeaponCommand extends Command
 
         foreach ($urlIds as $urlId) {
             $aUrl =
-                'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru/weapon/'.
+                'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/weapon/'.
                 $urlId.'.json?name='.$urlId;
 
             $ch = curl_init($aUrl);
@@ -152,7 +151,7 @@ class WeaponCommand extends Command
         $urlId = [];
 
         $aUrl =
-            'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru.json';
+            'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru.json';
 
         $ch = curl_init($aUrl);
 

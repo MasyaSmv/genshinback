@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Material;
-use Database\Seeders\MaterialSeed;
+use App\Models\Weapon\Weapon;
+use App\Models\Weapon\WeaponAscension;
+use DB;
 use Illuminate\Console\Command;
 
 class TestCommand extends Command
@@ -36,62 +37,19 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $paramsCreate = [];
-        $urlIds = $this->copyUrlId();
 
-        foreach ($urlIds as $urlId) {
-            $aUrl =
-                'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru/character/' .
-                $urlId . '.json?name=' . $urlId;
 
-            $ch = curl_init($aUrl);
+        $weapons = WeaponAscension::all();
 
-            curl_setopt(
-                $ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']
-            );
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $response = curl_exec($ch);
-            $data = object_to_array(json_decode($response));
+        echo '<pre>';
+        var_dump(json_encode($weapons, JSON_UNESCAPED_UNICODE));
+        echo '</pre>';
+        die();
 
-            echo '<pre>';
-            var_dump(array_keys($data['pageProps']));
-            echo '</pre>';
-            die();
 
-            foreach ($data as $pages) {
-                foreach ($pages as $page) {
-                    echo '<pre>';
-                    var_dump($page);
-                    echo '</pre>';
-                    die();
-                }
-            }
-            curl_close($ch);
+        foreach ($weapons as $key => $weapon) {
+            Weapon::create($weapon);
         }
-    }
-
-    /**
-     * @return array
-     */
-    public function copyUrlId() : array
-    {
-        $urlId = [];
-        $aUrl =
-            'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru/characters.json';
-        $ch = curl_init($aUrl);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        $data = object_to_array(json_decode($response));
-
-        foreach ($data['pageProps']['charactersByElement'] as $elementals) {
-            foreach ($elementals as $elemental) {
-                $urlId[] = $elemental['id'];
-            }
-        }
-        curl_close($ch);
-
-        return $urlId;
     }
 
 }

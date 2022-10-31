@@ -3,8 +3,8 @@
 namespace App\Helpers\Weapon;
 
 
-use App\Models\Weapon;
-use App\Models\WeaponStat;
+use App\Models\Weapon\Weapon;
+use App\Models\Weapon\WeaponStat;
 
 class WeaponSwitches
 {

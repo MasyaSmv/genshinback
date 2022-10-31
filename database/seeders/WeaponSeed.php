@@ -3,15 +3,16 @@
 namespace Database\Seeders;
 
 use App\Helpers\Weapon\WeaponSwitches;
-use App\Models\Material;
-use App\Models\Weapon;
-use App\Models\WeaponAscension;
-use App\Models\WeaponRefinement;
-use App\Models\WeaponStat;
+use App\Models\Material\Material;
+use App\Models\Weapon\Weapon;
+use App\Models\Weapon\WeaponAscension;
+use App\Models\Weapon\WeaponRefinement;
+use App\Models\Weapon\WeaponStat;
 use Illuminate\Database\Seeder;
 
 class WeaponSeed extends Seeder
 {
+    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
      * Run the database seeds.
      *
@@ -26,7 +27,7 @@ class WeaponSeed extends Seeder
         foreach ($urlIds as $urlId)
         {
             //сам URL оружия с нужными данными
-            $aUrl = 'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru/weapon/'.$urlId.'.json?name='.$urlId;
+            $aUrl = 'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/weapon/'.$urlId.'.json?name='.$urlId;
 
             //открываем подключение
             $ch = curl_init($aUrl);
@@ -141,7 +142,7 @@ class WeaponSeed extends Seeder
         $urlId = [];
 
         //URL от куда получаем список всех названий оружия
-        $aUrl = 'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru.json';
+        $aUrl = 'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru.json';
 
         //открываем подключение
         $ch = curl_init($aUrl);

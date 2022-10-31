@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Weapon;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Material\Material;
 use Illuminate\Database\Eloquent\Model;
 
 class WeaponAscension extends Model

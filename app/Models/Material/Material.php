@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Material;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model

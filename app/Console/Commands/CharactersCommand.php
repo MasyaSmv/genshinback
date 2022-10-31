@@ -51,12 +51,11 @@ class CharactersCommand extends Command
             $response = curl_exec($ch);
             $data = object_to_array(json_decode($response));
 
-            echo '<pre>';
-            var_dump(array_keys($data['pageProps']));
-            echo '</pre>';
-            die();
-
             foreach ($data as $pages) {
+                echo '<pre>';
+                var_dump(array_keys($pages));
+                echo '</pre>';
+                die();
                 foreach ($pages as $page) {
                     echo '<pre>';
                     var_dump($page);
@@ -81,11 +80,6 @@ class CharactersCommand extends Command
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         $data = object_to_array(json_decode($response));
-
-        echo '<pre>';
-        var_dump(array_keys($data));
-        echo '</pre>';
-        die();
 
         foreach ($data['pageProps']['charactersByElement'] as $elementals) {
             foreach ($elementals as $elemental) {

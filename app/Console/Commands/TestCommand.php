@@ -37,19 +37,14 @@ class TestCommand extends Command
      */
     public function handle()
     {
+        $photo = Weapon::find(1);
 
-
-        $weapons = WeaponAscension::all();
+        $imageable = $photo->fullWeapon;
 
         echo '<pre>';
-        var_dump(json_encode($weapons, JSON_UNESCAPED_UNICODE));
+        var_dump($photo);
         echo '</pre>';
         die();
-
-
-        foreach ($weapons as $key => $weapon) {
-            Weapon::create($weapon);
-        }
     }
 
 }

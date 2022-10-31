@@ -75,4 +75,11 @@ class WeaponStat extends Model
         return $this->hasOne(Weapon::class, 'id', 'weapon_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function weapons() : \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Weapon::class, 'fullWeapon');
+    }
 }

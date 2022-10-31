@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 class MaterialSeed extends Seeder
 {
+    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
      * Run the database seeds.
      *
@@ -15,7 +16,7 @@ class MaterialSeed extends Seeder
     public function run()
     {
         //url от куда берем данные по материалам геншина
-        $aUrl = 'https://genshin-builds.com/_next/data/lfreU0wqEJsvr_wQLr9kP/ru/todo.json';
+        $aUrl = 'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/todo.json';
 
         //открываем подключение
         $ch = curl_init($aUrl);

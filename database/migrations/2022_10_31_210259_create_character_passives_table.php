@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateElevationsTable extends Migration
+class CreateCharacterPassivesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateElevationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('elevations', function (Blueprint $table) {
+        Schema::create('character_passives', function (Blueprint $table) {
             $table->id();
+            $table->integer('character_id');
+            $table->integer('level');
+            $table->string('description');
+            $table->string('name');
         });
     }
 
@@ -25,6 +29,6 @@ class CreateElevationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('elevations');
+        Schema::dropIfExists('character_passives');
     }
 }

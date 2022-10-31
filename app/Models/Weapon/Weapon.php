@@ -57,8 +57,6 @@ class Weapon extends Model
      */
     public $timestamps = false;
 
-
-
     public const ONE_HANDED_WEAPON = 1;
 
     public const TWO_HANDED_WEAPON = 2;
@@ -79,4 +77,36 @@ class Weapon extends Model
         self::CATALYST,
         self::SHAFT,
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ascensions() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(WeaponAscension::class, 'weapon_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function refinements() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(WeaponRefinement::class, 'weapon_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stats() : \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(WeaponStat::class, 'weapon_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function fullWeapon() : \Illuminate\Database\Eloquent\Relations\MorphTo
+    {
+        return $this->morphTo();
+    }
 }

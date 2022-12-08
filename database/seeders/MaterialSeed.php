@@ -10,9 +10,9 @@ use Illuminate\Database\Seeder;
 class MaterialSeed extends Seeder
 {
     /**
-     *
+     * @return void
      */
-    public function run()
+    public function run(): void
     {
         //url от куда берем данные по материалам геншина
         $aUrl = 'https://genshin-builds.com/_next/data/'.GenshinBuildKey::DATA_KEY.'/ru/todo.json';
@@ -40,5 +40,4 @@ class MaterialSeed extends Seeder
             ]);
         }
     }
-
 }

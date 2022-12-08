@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         //сначала материалы, потом оружие, тк оружие получает айдишники материалов
         $this->call(MaterialSeed::class);
-//        $this->call(WeaponSeed::class);
+        $this->call(WeaponSeed::class);
     }
 }

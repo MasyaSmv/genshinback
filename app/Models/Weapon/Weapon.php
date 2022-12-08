@@ -54,30 +54,28 @@ class Weapon extends Model
     /**
      * @var string[]
      */
-    protected $fillable
-        = [
-            'name',
-            'description',
-            'rarity',
-            'type',
-            'domain',
-            'passive',
-            'bonus',
-        ];
+    protected $fillable = [
+        'name',
+        'description',
+        'rarity',
+        'type',
+        'domain',
+        'passive',
+        'bonus',
+    ];
 
     /**
      * @var string[]
      */
-    protected $casts
-        = [
-            'name'        => 'string',
-            'description' => 'text',
-            'rarity'      => 'integer',
-            'type'        => 'integer',
-            'domain'      => 'string',
-            'passive'     => 'string',
-            'bonus'       => 'text',
-        ];
+    protected $casts = [
+        'name' => 'string',
+        'description' => 'text',
+        'rarity' => 'integer',
+        'type' => 'integer',
+        'domain' => 'string',
+        'passive' => 'string',
+        'bonus' => 'text',
+    ];
 
     /**
      * @var bool
@@ -88,11 +86,11 @@ class Weapon extends Model
 
     public const TWO_HANDED_WEAPON = 2;
 
-    public const SMALL_ARMS        = 3;
+    public const SMALL_ARMS = 3;
 
-    public const CATALYST          = 4;
+    public const CATALYST = 4;
 
-    public const SHAFT             = 5;
+    public const SHAFT = 5;
 
     /**
      * @var array
@@ -108,7 +106,7 @@ class Weapon extends Model
     /**
      * @return HasMany
      */
-    public function ascensions() : HasMany
+    public function ascensions(): HasMany
     {
         return $this->hasMany(WeaponAscension::class, 'weapon_id');
     }
@@ -116,7 +114,7 @@ class Weapon extends Model
     /**
      * @return HasMany
      */
-    public function refinements() : HasMany
+    public function refinements(): HasMany
     {
         return $this->hasMany(WeaponRefinement::class, 'weapon_id');
     }
@@ -124,7 +122,7 @@ class Weapon extends Model
     /**
      * @return HasMany
      */
-    public function stats() : HasMany
+    public function stats(): HasMany
     {
         return $this->hasMany(WeaponStat::class, 'weapon_id');
     }
@@ -132,7 +130,7 @@ class Weapon extends Model
     /**
      * @return MorphTo
      */
-    public function fullWeapon() : MorphTo
+    public function fullWeapon(): MorphTo
     {
         return $this->morphTo();
     }

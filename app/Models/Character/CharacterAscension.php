@@ -3,15 +3,18 @@
 namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Character\CharacterAscension
  *
- * @property-read \App\Models\Character\Character|null $character
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension query()
- * @mixin \Eloquent
+ * @property $character_id
+ * @property $ascension
+ * @property $cost
+ * @property $level
+ * @property $first_material_id
+ * @property $second_material_id
+ * @property $third_material_id
  */
 class CharacterAscension extends Model
 {
@@ -23,30 +26,28 @@ class CharacterAscension extends Model
     /**
      * @var string[]
      */
-    protected $fillable
-        = [
-            'character_id',
-            'ascension',
-            'cost',
-            'level',
-            'first_material_id',
-            'second_material_id',
-            'third_material_id',
-        ];
+    protected $fillable = [
+        'character_id',
+        'ascension',
+        'cost',
+        'level',
+        'first_material_id',
+        'second_material_id',
+        'third_material_id',
+    ];
 
     /**
      * @var string[]
      */
-    protected $casts
-        = [
-            'character_id' => 'integer',
-            'ascension' => 'integer',
-            'cost' => 'integer',
-            'level' => 'integer',
-            'first_material_id' => 'integer',
-            'second_material_id' => 'integer',
-            'third_material_id' => 'integer',
-        ];
+    protected $casts = [
+        'character_id' => 'integer',
+        'ascension' => 'integer',
+        'cost' => 'integer',
+        'level' => 'integer',
+        'first_material_id' => 'integer',
+        'second_material_id' => 'integer',
+        'third_material_id' => 'integer',
+    ];
 
     /**
      * @var bool
@@ -54,9 +55,9 @@ class CharacterAscension extends Model
     public $timestamps = false;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function character() : \Illuminate\Database\Eloquent\Relations\HasOne
+    public function character(): HasOne
     {
         return $this->hasOne(Character::class, 'id', 'character_id');
     }

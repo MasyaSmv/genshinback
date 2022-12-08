@@ -3,25 +3,16 @@
 namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Character\CharacterConstellation
  *
- * @property int $id
- * @property int $character_id
- * @property string $description
- * @property string $name
- * @property int $level
- * @property-read \App\Models\Character\Character|null $character
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation query()
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation whereCharacterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation whereLevel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CharacterConstellation whereName($value)
- * @mixin \Eloquent
+ * @property $id
+ * @property $character_id
+ * @property $description
+ * @property $name
+ * @property $level
  */
 class CharacterConstellation extends Model
 {
@@ -33,24 +24,22 @@ class CharacterConstellation extends Model
     /**
      * @var string[]
      */
-    protected $fillable
-        = [
-            'character_id',
-            'description',
-            'name',
-            'level',
-        ];
+    protected $fillable = [
+        'character_id',
+        'description',
+        'name',
+        'level',
+    ];
 
     /**
      * @var string[]
      */
-    protected $casts
-        = [
-            'character_id' => 'integer',
-            'description'  => 'string',
-            'name'         => 'string',
-            'level'        => 'integer',
-        ];
+    protected $casts = [
+        'character_id' => 'integer',
+        'description' => 'string',
+        'name' => 'string',
+        'level' => 'integer',
+    ];
 
     /**
      * @var bool
@@ -58,9 +47,9 @@ class CharacterConstellation extends Model
     public $timestamps = false;
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function character() : \Illuminate\Database\Eloquent\Relations\HasOne
+    public function character(): HasOne
     {
         return $this->hasOne(Character::class, 'id', 'character_id');
     }

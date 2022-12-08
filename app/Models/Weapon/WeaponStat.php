@@ -2,32 +2,22 @@
 
 namespace App\Models\Weapon;
 
+use App\Models\Interfaces\DefinitionWeaponStatConst;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * App\Models\Weapon\WeaponStat
  *
- * @property int $id
- * @property int $weapon_id
- * @property int $ascension
- * @property int $level
- * @property int $base_atk
- * @property int $secondary_id
- * @property-read \App\Models\Weapon\Weapon|null $weapon
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\Weapon[] $weapons
- * @property-read int|null $weapons_count
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat query()
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereAscension($value)
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereBaseAtk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereLevel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereSecondaryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereWeaponId($value)
- * @mixin \Eloquent
+ * @property $id
+ * @property $weapon_id
+ * @property $ascension
+ * @property $level
+ * @property $base_atk
+ * @property $secondary_id
  */
-class WeaponStat extends Model
+class WeaponStat extends Model implements DefinitionWeaponStatConst
 {
     /**
      * @var string
@@ -37,71 +27,42 @@ class WeaponStat extends Model
     /**
      * @var string[]
      */
-    protected $fillable
-        = [
-            'weapon_id',
-            'ascension',
-            'level',
-            'base_atk',
-            'secondary_id',
-        ];
+    protected $fillable = [
+        'weapon_id',
+        'ascension',
+        'level',
+        'base_atk',
+        'secondary_id',
+    ];
 
     /**
      * @var string[]
      */
-    protected $casts
-        = [
-            'weapon_id'    => 'integer',
-            'ascension'    => 'integer',
-            'level'        => 'integer',
-            'base_atk'     => 'integer',
-            'secondary_id' => 'integer',
-        ];
+    protected $casts = [
+        'weapon_id' => 'integer',
+        'ascension' => 'integer',
+        'level' => 'integer',
+        'base_atk' => 'integer',
+        'secondary_id' => 'integer',
+    ];
 
     /**
      * @var bool
      */
     public $timestamps = false;
 
-    public const ATK_POWER        = 1;
-
-    public const PHYSICAL_DMG     = 2;
-
-    public const MASTERY_ELEMENTS = 3;
-
-    public const CRT_RATE         = 4;
-
-    public const CRT_DMG          = 5;
-
-    public const HP               = 6;
-
-    public const ENERGY_RECOVERY  = 7;
-
-    public const DEF              = 8;
-
-    public const SECONDARY_STAT   = [
-        self::ATK_POWER,
-        self::PHYSICAL_DMG,
-        self::MASTERY_ELEMENTS,
-        self::CRT_RATE,
-        self::CRT_DMG,
-        self::HP,
-        self::ENERGY_RECOVERY,
-        self::DEF,
-    ];
-
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function weapon() : \Illuminate\Database\Eloquent\Relations\HasOne
+    public function weapon(): HasOne
     {
         return $this->hasOne(Weapon::class, 'id', 'weapon_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return MorphMany
      */
-    public function weapons() : \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function weapons(): MorphMany
     {
         return $this->morphMany(Weapon::class, 'fullWeapon');
     }

@@ -5,6 +5,51 @@ namespace App\Models\Character\Skills;
 use App\Models\Character\Character;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\Skills\CharacterSkillAtk
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property string $name
+ * @property float $level_1
+ * @property float $level_2
+ * @property float $level_3
+ * @property float $level_4
+ * @property float $level_5
+ * @property float $level_6
+ * @property float $level_7
+ * @property float $level_8
+ * @property float $level_9
+ * @property float $level_10
+ * @property float $level_11
+ * @property float $level_12
+ * @property float $level_13
+ * @property float $level_14
+ * @property float $level_15
+ * @property-read Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel10($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel11($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel12($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel13($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel14($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel15($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereLevel9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillAtk whereName($value)
+ * @mixin \Eloquent
+ */
 class CharacterSkillAtk extends Model
 {
     /**

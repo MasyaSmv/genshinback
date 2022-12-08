@@ -4,6 +4,15 @@ namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\CharacterAscension
+ *
+ * @property-read \App\Models\Character\Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterAscension query()
+ * @mixin \Eloquent
+ */
 class CharacterAscension extends Model
 {
     /**

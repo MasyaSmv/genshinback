@@ -5,6 +5,51 @@ namespace App\Models\Character\Skills;
 use App\Models\Character\Character;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\Skills\CharacterSkillBurst
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property string $name
+ * @property float $level_1
+ * @property float $level_2
+ * @property float $level_3
+ * @property float $level_4
+ * @property float $level_5
+ * @property float $level_6
+ * @property float $level_7
+ * @property float $level_8
+ * @property float $level_9
+ * @property float $level_10
+ * @property float $level_11
+ * @property float $level_12
+ * @property float $level_13
+ * @property float $level_14
+ * @property float $level_15
+ * @property-read Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel10($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel11($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel12($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel13($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel14($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel15($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereLevel9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillBurst whereName($value)
+ * @mixin \Eloquent
+ */
 class CharacterSkillBurst extends Model
 {
     /**

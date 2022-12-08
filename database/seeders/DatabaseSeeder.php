@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         //сначала материалы, потом оружие, тк оружие получает айдишники материалов
         $this->call(MaterialSeed::class);
-        $this->call(WeaponSeed::class);
+//        $this->call(WeaponSeed::class);
     }
 }

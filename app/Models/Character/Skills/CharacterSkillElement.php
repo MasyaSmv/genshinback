@@ -5,6 +5,51 @@ namespace App\Models\Character\Skills;
 use App\Models\Character\Character;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\Skills\CharacterSkillElement
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property string $name
+ * @property float $level_1
+ * @property float $level_2
+ * @property float $level_3
+ * @property float $level_4
+ * @property float $level_5
+ * @property float $level_6
+ * @property float $level_7
+ * @property float $level_8
+ * @property float $level_9
+ * @property float $level_10
+ * @property float $level_11
+ * @property float $level_12
+ * @property float $level_13
+ * @property float $level_14
+ * @property float $level_15
+ * @property-read Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel10($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel11($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel12($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel13($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel14($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel15($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel4($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel5($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel6($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel7($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel8($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereLevel9($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkillElement whereName($value)
+ * @mixin \Eloquent
+ */
 class CharacterSkillElement extends Model
 {
     /**

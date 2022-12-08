@@ -4,6 +4,14 @@ namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\Character
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Character newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Character newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Character query()
+ * @mixin \Eloquent
+ */
 class Character extends Model
 {
     /**

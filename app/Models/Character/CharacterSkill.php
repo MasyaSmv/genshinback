@@ -4,6 +4,25 @@ namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\CharacterSkill
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property string $description
+ * @property string $info
+ * @property string $name
+ * @property-read \App\Models\Character\Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill whereInfo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterSkill whereName($value)
+ * @mixin \Eloquent
+ */
 class CharacterSkill extends Model
 {
     /**

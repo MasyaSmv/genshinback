@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\GenshinBuildKey;
 use Illuminate\Console\Command;
 
 class CharactersCommand extends Command
 {
-    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
      * The name and signature of the console command.
      *
@@ -39,7 +39,7 @@ class CharactersCommand extends Command
 
         foreach ($urlIds as $urlId) {
             $aUrl =
-                'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/character/' .
+                'https://genshin-builds.com/_next/data/'.GenshinBuildKey::DATA_KEY.'/ru/character/' .
                 $urlId . '.json?name=' . $urlId;
 
             $ch = curl_init($aUrl);
@@ -74,7 +74,7 @@ class CharactersCommand extends Command
     {
         $urlId = [];
         $aUrl =
-            'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/characters.json';
+            'https://genshin-builds.com/_next/data/'.GenshinBuildKey::DATA_KEY.'/ru/characters.json';
         $ch = curl_init($aUrl);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

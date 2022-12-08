@@ -7,26 +7,22 @@ use Illuminate\Support\Facades\Schema;
 class CreateMaterialsTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('materials', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('rarity');
-            $table->string('type');
+            $table->integer('type');
         });
     }
 
     /**
-     * Reverse the migrations.
-     *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('materials');
     }

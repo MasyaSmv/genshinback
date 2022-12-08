@@ -4,6 +4,25 @@ namespace App\Models\Character;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Character\CharacterPassive
+ *
+ * @property int $id
+ * @property int $character_id
+ * @property int $level
+ * @property string $description
+ * @property string $name
+ * @property-read \App\Models\Character\Character|null $character
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive whereCharacterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CharacterPassive whereName($value)
+ * @mixin \Eloquent
+ */
 class CharacterPassive extends Model
 {
     /**

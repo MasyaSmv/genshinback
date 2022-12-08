@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\GenshinBuildKey;
+use App\Helpers\Materials\MaterialSwitches;
+use App\Models\Material\Material;
 use App\Models\Weapon\Weapon;
 use App\Models\Weapon\WeaponAscension;
 use DB;
@@ -37,14 +40,31 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $photo = Weapon::find(1);
+        //url от куда берем данные по материалам геншина
+        $aUrl = 'https://genshin-builds.com/_next/data/'.GenshinBuildKey::DATA_KEY.'/ru/todo.json';
 
-        $imageable = $photo->fullWeapon;
+        //открываем подключение
+        $ch = curl_init($aUrl);
 
-        echo '<pre>';
-        var_dump($photo);
-        echo '</pre>';
-        die();
+        //указываем параметры подключения
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        //записываем полученные данные
+        $response = curl_exec($ch);
+
+        //конвертируем в нужный нам тип
+        $data = object_to_array(json_decode($response));
+
+        //перебираем полученные данные и записываем по циклу
+        foreach ($data['pageProps']['materialsMap'] as $pageProp)
+        {
+            Material::create([
+                'name'   => $pageProp['name'],
+                'rarity' => $pageProp['rarity'],
+                'type'   => MaterialSwitches::typeMaterial($pageProp['type']),
+            ]);
+        }
     }
 
 }

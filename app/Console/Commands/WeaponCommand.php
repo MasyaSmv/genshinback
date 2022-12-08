@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\GenshinBuildKey;
 use App\Helpers\Weapon\WeaponSwitches;
 use App\Models\Material\Material;
 use App\Models\Weapon\Weapon;
@@ -12,7 +13,6 @@ use Illuminate\Console\Command;
 
 class WeaponCommand extends Command
 {
-    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
      * The name and signature of the console command.
      *
@@ -28,24 +28,15 @@ class WeaponCommand extends Command
     protected $description = '';
 
     /**
-     *
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $urlIds = $this->copyUrlId();
 
-        foreach ($urlIds as $urlId) {
-            $aUrl =
-                'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/weapon/'.
-                $urlId.'.json?name='.$urlId;
+        foreach ($urlIds as $urlId)
+        {
+            $aUrl = 'https://genshin-builds.com/_next/data/' . GenshinBuildKey::DATA_KEY . '/ru/weapon/' . $urlId . '.json?name=' . $urlId;
 
             $ch = curl_init($aUrl);
             curl_setopt(
@@ -63,15 +54,15 @@ class WeaponCommand extends Command
 
                     if (empty($weaponCreate)) {
                         $weaponCreate = Weapon::create([
-                            'name'        => $weapon['name'],
+                            'name' => $weapon['name'],
                             'description' => $weapon['description'],
-                            'rarity'      => $weapon['rarity'],
-                            'type'        => WeaponSwitches::typeWeapon(
+                            'rarity' => $weapon['rarity'],
+                            'type' => WeaponSwitches::typeWeapon(
                                 $weapon['type']
                             ),
-                            'domain'      => $weapon['domain'],
-                            'passive'     => $weapon['passive'],
-                            'bonus'       => $weapon['bonus'],
+                            'domain' => $weapon['domain'],
+                            'passive' => $weapon['passive'],
+                            'bonus' => $weapon['bonus'],
                         ]);
 
                         if ($weaponCreate) {
@@ -81,42 +72,47 @@ class WeaponCommand extends Command
                                         $weapon['stats']['secondary']
                                     );
                             }
-                            foreach ($weapon['stats']['levels'] as $refinement)
-                            {
+                            foreach ($weapon['stats']['levels'] as $refinement) {
                                 $weaponStat = WeaponStat::create([
-                                    'weapon_id'    => $weaponCreate->id,
-                                    'ascension'    => $refinement['ascension'],
-                                    'level'        => $refinement['level'],
-                                    'base_atk'     => $refinement['primary'],
+                                    'weapon_id' => $weaponCreate->id,
+                                    'ascension' => $refinement['ascension'],
+                                    'level' => $refinement['level'],
+                                    'base_atk' => $refinement['primary'],
                                     'secondary_id' => $secondaryId ?? null,
                                 ]);
                             }
                             foreach ($weapon['refinements'] as $refinement) {
                                 $weaponRefinement = WeaponRefinement::create([
-                                    'weapon_id'   => $weaponCreate->id,
-                                    'refinement'  => $refinement['refinement'],
+                                    'weapon_id' => $weaponCreate->id,
+                                    'refinement' => $refinement['refinement'],
                                     'description' => $refinement['desc'],
                                 ]);
                             }
                             foreach ($weapon['ascensions'] as $ascension) {
                                 if (!empty($ascension['materials'])) {
-                                    $firstMaterial = Material::where('name',
-                                        $ascension['materials'][0]['name'])
+                                    $firstMaterial = Material::where(
+                                        'name',
+                                        $ascension['materials'][0]['name']
+                                    )
                                         ->first();
-                                    $secondMaterial = Material::where('name',
-                                        $ascension['materials'][1]['name'])
+                                    $secondMaterial = Material::where(
+                                        'name',
+                                        $ascension['materials'][1]['name']
+                                    )
                                         ->first();
-                                    $thirdMaterial = Material::where('name',
-                                        $ascension['materials'][2]['name'])
+                                    $thirdMaterial = Material::where(
+                                        'name',
+                                        $ascension['materials'][2]['name']
+                                    )
                                         ->first();
                                 }
                                 $weaponAscension = WeaponAscension::create([
-                                    'weapon_id'          => $weaponCreate->id,
-                                    'ascension'          => $ascension['ascension'],
-                                    'level'              => $ascension['level'],
-                                    'cost'               => $ascension['cost']
+                                    'weapon_id' => $weaponCreate->id,
+                                    'ascension' => $ascension['ascension'],
+                                    'level' => $ascension['level'],
+                                    'cost' => $ascension['cost']
                                         ?? 0,
-                                    'first_material_id'  => isset($firstMaterial)
+                                    'first_material_id' => isset($firstMaterial)
                                         ? $firstMaterial->id
                                         :
                                         null,
@@ -124,7 +120,7 @@ class WeaponCommand extends Command
                                         ? $secondMaterial->id
                                         :
                                         null,
-                                    'third_material_id'  => isset($thirdMaterial)
+                                    'third_material_id' => isset($thirdMaterial)
                                         ? $thirdMaterial->id
                                         :
                                         null,
@@ -146,12 +142,12 @@ class WeaponCommand extends Command
     /**
      * @return array
      */
-    public function copyUrlId() : array
+    public function copyUrlId(): array
     {
         $urlId = [];
 
         $aUrl =
-            'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru.json';
+            'https://genshin-builds.com/_next/data/' . GenshinBuildKey::DATA_KEY . '/ru.json';
 
         $ch = curl_init($aUrl);
 

@@ -5,6 +5,36 @@ namespace App\Models\Weapon;
 use App\Models\Material\Material;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Weapon\WeaponAscension
+ *
+ * @property int $id
+ * @property int $weapon_id
+ * @property int $ascension
+ * @property int $level
+ * @property int $cost
+ * @property int|null $first_material_id
+ * @property int|null $second_material_id
+ * @property int|null $third_material_id
+ * @property-read Material|null $firstMaterial
+ * @property-read Material|null $secondMaterial
+ * @property-read Material|null $thirdMaterial
+ * @property-read \App\Models\Weapon\Weapon|null $weapon
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\Weapon[] $weapons
+ * @property-read int|null $weapons_count
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereAscension($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereCost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereFirstMaterialId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereSecondMaterialId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereThirdMaterialId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponAscension whereWeaponId($value)
+ * @mixin \Eloquent
+ */
 class WeaponAscension extends Model
 {
     /**

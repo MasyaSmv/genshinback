@@ -4,6 +4,29 @@ namespace App\Models\Weapon;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Weapon\WeaponStat
+ *
+ * @property int $id
+ * @property int $weapon_id
+ * @property int $ascension
+ * @property int $level
+ * @property int $base_atk
+ * @property int $secondary_id
+ * @property-read \App\Models\Weapon\Weapon|null $weapon
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\Weapon[] $weapons
+ * @property-read int|null $weapons_count
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereAscension($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereBaseAtk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereSecondaryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WeaponStat whereWeaponId($value)
+ * @mixin \Eloquent
+ */
 class WeaponStat extends Model
 {
     /**

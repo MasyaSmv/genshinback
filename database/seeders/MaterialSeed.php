@@ -2,21 +2,20 @@
 
 namespace Database\Seeders;
 
+use App\Helpers\GenshinBuildKey;
+use App\Helpers\Materials\MaterialSwitches;
 use App\Models\Material\Material;
 use Illuminate\Database\Seeder;
 
 class MaterialSeed extends Seeder
 {
-    public const DATA_VALUE = 'aJ4GCxs7vyge1bR-uqW7y';
     /**
-     * Run the database seeds.
      *
-     * @return void
      */
     public function run()
     {
         //url от куда берем данные по материалам геншина
-        $aUrl = 'https://genshin-builds.com/_next/data/'.self::DATA_VALUE.'/ru/todo.json';
+        $aUrl = 'https://genshin-builds.com/_next/data/'.GenshinBuildKey::DATA_KEY.'/ru/todo.json';
 
         //открываем подключение
         $ch = curl_init($aUrl);
@@ -37,7 +36,7 @@ class MaterialSeed extends Seeder
             Material::create([
                 'name'   => $pageProp['name'],
                 'rarity' => $pageProp['rarity'],
-                'type'   => $pageProp['type'],
+                'type'   => MaterialSwitches::typeMaterial($pageProp['type']),
             ]);
         }
     }

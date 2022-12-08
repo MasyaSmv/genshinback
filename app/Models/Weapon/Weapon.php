@@ -3,6 +3,8 @@
 namespace App\Models\Weapon;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * App\Models\User
@@ -14,8 +16,33 @@ use Illuminate\Database\Eloquent\Model;
  * @param $domain
  * @param $passive
  * @param $bonus
- *
  * @property int $id
+ * @property string $name
+ * @property mixed $description
+ * @property int $rarity
+ * @property int $type
+ * @property string $domain
+ * @property string $passive
+ * @property mixed $bonus
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\WeaponAscension[] $ascensions
+ * @property-read int|null $ascensions_count
+ * @property-read Model|\Eloquent $fullWeapon
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\WeaponRefinement[] $refinements
+ * @property-read int|null $refinements_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Weapon\WeaponStat[] $stats
+ * @property-read int|null $stats_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereBonus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereDomain($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon wherePassive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereRarity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weapon whereType($value)
+ * @mixin \Eloquent
  */
 class Weapon extends Model
 {
@@ -79,33 +106,33 @@ class Weapon extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function ascensions() : \Illuminate\Database\Eloquent\Relations\HasMany
+    public function ascensions() : HasMany
     {
         return $this->hasMany(WeaponAscension::class, 'weapon_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function refinements() : \Illuminate\Database\Eloquent\Relations\HasMany
+    public function refinements() : HasMany
     {
         return $this->hasMany(WeaponRefinement::class, 'weapon_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function stats() : \Illuminate\Database\Eloquent\Relations\HasMany
+    public function stats() : HasMany
     {
         return $this->hasMany(WeaponStat::class, 'weapon_id');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return MorphTo
      */
-    public function fullWeapon() : \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function fullWeapon() : MorphTo
     {
         return $this->morphTo();
     }

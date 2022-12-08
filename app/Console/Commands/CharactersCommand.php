@@ -46,6 +46,10 @@ class CharactersCommand extends Command
                     $characterCreate = Character::firstWhere('name', $pages['name']);
 
                     if (!$characterCreate) {
+//                        echo '<pre>';
+//                        var_dump($pages);
+//                        echo '</pre>';
+//                        die;
                         $characterCreate = Character::create([
                             'name' => $pages['name'],
                             'affiliation' => $pages['affiliation'],
@@ -60,10 +64,6 @@ class CharactersCommand extends Command
                             'weapon_type_id' => WeaponSwitches::typeWeapon($pages['weapon_type']),
                             'icon' => $pages[''],
                         ]);
-                        echo '<pre>';
-                        var_dump($pages);
-                        echo '</pre>';
-                        die;
                     }
                 }
             }

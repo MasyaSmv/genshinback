@@ -16,8 +16,8 @@ class CreateCharacterSkillsTable extends Migration
         Schema::create('character_skills', function (Blueprint $table) {
             $table->id();
             $table->integer('character_id',);
-            $table->string('description',);
-            $table->string('info',);
+            $table->text('description',);
+            $table->text('info',);
             $table->string('name',);
         });
     }

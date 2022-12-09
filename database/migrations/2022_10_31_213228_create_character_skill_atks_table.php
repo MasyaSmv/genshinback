@@ -17,21 +17,21 @@ class CreateCharacterSkillAtksTable extends Migration
             $table->id();
             $table->integer('character_id');
             $table->string('name');
-            $table->double('level_1');
-            $table->double('level_2');
-            $table->double('level_3');
-            $table->double('level_4');
-            $table->double('level_5');
-            $table->double('level_6');
-            $table->double('level_7');
-            $table->double('level_8');
-            $table->double('level_9');
-            $table->double('level_10');
-            $table->double('level_11');
-            $table->double('level_12');
-            $table->double('level_13');
-            $table->double('level_14');
-            $table->double('level_15');
+            $table->string('level_1')->nullable();
+            $table->string('level_2')->nullable();
+            $table->string('level_3')->nullable();
+            $table->string('level_4')->nullable();
+            $table->string('level_5')->nullable();
+            $table->string('level_6')->nullable();
+            $table->string('level_7')->nullable();
+            $table->string('level_8')->nullable();
+            $table->string('level_9')->nullable();
+            $table->string('level_10')->nullable();
+            $table->string('level_11')->nullable();
+            $table->string('level_12')->nullable();
+            $table->string('level_13')->nullable();
+            $table->string('level_14')->nullable();
+            $table->string('level_15')->nullable();
         });
     }
 

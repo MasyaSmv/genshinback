@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Character;
+namespace App\Models\Character\Skills;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -36,8 +36,8 @@ class CharacterSkill extends Model
      */
     protected $casts = [
         'character_id' => 'integer',
-        'description' => 'string',
-        'info' => 'string',
+        'description' => 'text',
+        'info' => 'text',
         'name' => 'string',
     ];
 

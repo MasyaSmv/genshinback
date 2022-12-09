@@ -6,6 +6,7 @@ use App\Models\Interfaces\DefinitionCharacterConst;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property $id
  * @property $name
  * @property $affiliation
  * @property $constellation

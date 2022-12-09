@@ -18,8 +18,10 @@ class CreateCharacterTalentMaterialsTable extends Migration
             $table->integer('character_id');
             $table->integer('level');
             $table->integer('cost');
-            $table->integer('first_material');
-            $table->integer('second_material');
+            $table->integer('first_material_id')->nullable();
+            $table->integer('second_material_id')->nullable();
+            $table->integer('third_material_id')->nullable();
+            $table->integer('fourth_material_id')->nullable();
         });
     }
 

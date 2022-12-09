@@ -16,7 +16,7 @@ class CreateCharacterConstellationsTable extends Migration
         Schema::create('character_constellations', function (Blueprint $table) {
             $table->id();
             $table->integer('character_id');
-            $table->string('description');
+            $table->text('description');
             $table->string('name');
             $table->integer('level');
         });

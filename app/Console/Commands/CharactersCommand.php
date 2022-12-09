@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Helpers\Characters\CharacterSwitches;
 use App\Helpers\GenshinBuildKey;
 use App\Helpers\Weapon\WeaponSwitches;
 use App\Models\Character\Character;
@@ -46,24 +47,26 @@ class CharactersCommand extends Command
                     $characterCreate = Character::firstWhere('name', $pages['name']);
 
                     if (!$characterCreate) {
-//                        echo '<pre>';
-//                        var_dump($pages);
-//                        echo '</pre>';
-//                        die;
                         $characterCreate = Character::create([
                             'name' => $pages['name'],
                             'affiliation' => $pages['affiliation'],
-                            'constellation' => $pages[''],
+                            'constellation' => $pages['constellation'],
                             'description' => $pages['description'],
-                            'domain' => $pages[''],
-                            'element_id' => $pages[''],
-                            'gender_id' => $pages[''],
-                            'rarity' => $pages[''],
-                            'substat_id' => $pages[''],
+                            'domain' => $pages['domain'],
+                            'element_id' => CharacterSwitches::typeElement($pages['element']),
+                            'gender_id' => CharacterSwitches::typeGender($pages['gender']),
+                            'rarity' => $pages['rarity'],
+                            'substat_id' => CharacterSwitches::typeSubStat($pages['substat']),
                             'title' => $pages['title'],
                             'weapon_type_id' => WeaponSwitches::typeWeapon($pages['weapon_type']),
-                            'icon' => $pages[''],
+                            'region_id' => CharacterSwitches::typeRegion($pages['region']),
+                            'icon' => '',
                         ]);
+
+                        echo '<pre>';
+                        var_dump($characterCreate);
+                        echo '</pre>';
+                        die();
                     }
                 }
             }

@@ -47,6 +47,8 @@ interface DefinitionCharacterConst
     public const BONUS_ANEMO_DMG = 12;
     public const BONUS_DENDRO_DMG = 13;
     public const BONUS_GEO_DMG = 14;
+    public const DEF = 15;
+    public const HEAL_BONUS = 16;
 
     public const SUBSTAT_TYPES = [
         self::ATK_POWER,
@@ -63,6 +65,11 @@ interface DefinitionCharacterConst
         self::BONUS_ANEMO_DMG,
         self::BONUS_DENDRO_DMG,
         self::BONUS_GEO_DMG,
+        self::DEF,
     ];
 
+    public const MONDSHTAT = 1;
+    public const LI_YUE = 2;
+    public const INADZUMA = 3;
+    public const SUMERU = 4;
 }

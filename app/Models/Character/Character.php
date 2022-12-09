@@ -24,7 +24,7 @@ class Character extends Model implements DefinitionCharacterConst
     /**
      * @var string
      */
-    public $table = 'character';
+    public $table = 'characters';
 
     /**
      * @var string[]
@@ -41,6 +41,7 @@ class Character extends Model implements DefinitionCharacterConst
         'substat_id',
         'title',
         'weapon_type_id',
+        'region_id',
         'icon',
     ];
 
@@ -51,7 +52,7 @@ class Character extends Model implements DefinitionCharacterConst
         'name' => 'string',
         'affiliation' => 'string',
         'constellation' => 'string',
-        'description' => 'string',
+        'description' => 'text',
         'domain' => 'string',
         'element_id' => 'integer',
         'gender_id' => 'integer',
@@ -59,6 +60,7 @@ class Character extends Model implements DefinitionCharacterConst
         'substat_id' => 'integer',
         'title' => 'string',
         'weapon_type_id' => 'integer',
+        'region_id' => 'integer',
         'icon' => 'string',
     ];
 

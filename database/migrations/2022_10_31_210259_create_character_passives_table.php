@@ -17,7 +17,7 @@ class CreateCharacterPassivesTable extends Migration
             $table->id();
             $table->integer('character_id');
             $table->integer('level');
-            $table->string('description');
+            $table->text('description');
             $table->string('name');
         });
     }

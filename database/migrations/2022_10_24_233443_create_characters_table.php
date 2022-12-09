@@ -11,14 +11,14 @@ class CreateCharactersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('characters', function (Blueprint $table) {
+        Schema::create('characters', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('affiliation');
             $table->string('constellation');
-            $table->string('description');
+            $table->text('description');
             $table->string('domain');
             $table->integer('element_id');
             $table->integer('gender_id');
@@ -26,6 +26,7 @@ class CreateCharactersTable extends Migration
             $table->integer('substat_id');
             $table->string('title');
             $table->integer('weapon_type_id');
+            $table->integer('region_id');
             $table->string('icon');
         });
     }
@@ -35,7 +36,7 @@ class CreateCharactersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('characters');
     }

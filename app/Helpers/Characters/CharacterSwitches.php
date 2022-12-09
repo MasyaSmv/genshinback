@@ -43,6 +43,8 @@ class CharacterSwitches
                 return DefinitionCharacterConst::MALE;
             case 'женский':
                 return DefinitionCharacterConst::FEMALE;
+            case 'мужчина/женский':
+                return DefinitionCharacterConst::TRAVELER;
         }
     }
 

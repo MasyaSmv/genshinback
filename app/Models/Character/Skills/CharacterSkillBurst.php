@@ -33,7 +33,7 @@ class CharacterSkillBurst extends Model
     /**
      * @var string
      */
-    public $table = 'character_skill_burst';
+    public $table = 'character_skill_bursts';
 
     /**
      * @var string[]

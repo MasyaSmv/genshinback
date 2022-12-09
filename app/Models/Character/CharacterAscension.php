@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property $first_material_id
  * @property $second_material_id
  * @property $third_material_id
+ * @property $fourth_material_id
  */
 class CharacterAscension extends Model
 {
@@ -34,6 +35,7 @@ class CharacterAscension extends Model
         'first_material_id',
         'second_material_id',
         'third_material_id',
+        'fourth_material_id',
     ];
 
     /**
@@ -47,6 +49,7 @@ class CharacterAscension extends Model
         'first_material_id' => 'integer',
         'second_material_id' => 'integer',
         'third_material_id' => 'integer',
+        'fourth_material_id' => 'integer',
     ];
 
     /**

@@ -6,6 +6,8 @@ use App\Helpers\Characters\CharacterSwitches;
 use App\Helpers\GenshinBuildKey;
 use App\Helpers\Weapon\WeaponSwitches;
 use App\Models\Character\Character;
+use App\Models\Character\CharacterAscension;
+use App\Models\Material\Material;
 use Illuminate\Console\Command;
 
 class CharactersCommand extends Command
@@ -57,16 +59,36 @@ class CharactersCommand extends Command
                             'gender_id' => CharacterSwitches::typeGender($pages['gender']),
                             'rarity' => $pages['rarity'],
                             'substat_id' => CharacterSwitches::typeSubStat($pages['substat']),
-                            'title' => $pages['title'],
+                            'title' => $pages['title'] ?? null,
                             'weapon_type_id' => WeaponSwitches::typeWeapon($pages['weapon_type']),
-                            'region_id' => CharacterSwitches::typeRegion($pages['region']),
+                            'region_id' => isset($pages['region']) ? CharacterSwitches::typeRegion(
+                                $pages['region']
+                            ) : null,
                             'icon' => '',
                         ]);
 
-                        echo '<pre>';
-                        var_dump($characterCreate);
-                        echo '</pre>';
-                        die();
+                        if ($characterCreate) {
+                            foreach ($pages['ascension'] as $ascensions) {
+                                $firstMat = Material::firstWhere('name', $ascensions['mat1']['name']);
+                                $thirdMat = Material::firstWhere('name', $ascensions['mat3']['name']);
+                                $fourthMat = Material::firstWhere('name', $ascensions['mat4']['name']);
+
+                                if (isset($ascensions['mat2'])) {
+                                    $secondMat = Material::firstWhere('name', $ascensions['mat2']['name']);
+                                }
+
+                                CharacterAscension::create([
+                                    'character_id' => $characterCreate->id,
+                                    'ascension' => $ascensions['ascension'],
+                                    'cost' => $ascensions['cost'],
+                                    'level' => $ascensions['level'][1],
+                                    'first_material_id' => $firstMat->id ?? null,
+                                    'second_material_id' => isset($secondMat) ? $secondMat->id : null,
+                                    'third_material_id' => $thirdMat->id ?? null,
+                                    'fourth_material_id' => $fourthMat->id ?? null,
+                                ]);
+                            }
+                        }
                     }
                 }
             }

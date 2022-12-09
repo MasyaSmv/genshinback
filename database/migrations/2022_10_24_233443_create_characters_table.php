@@ -24,9 +24,9 @@ class CreateCharactersTable extends Migration
             $table->integer('gender_id');
             $table->integer('rarity');
             $table->integer('substat_id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->integer('weapon_type_id');
-            $table->integer('region_id');
+            $table->integer('region_id')->nullable();
             $table->string('icon');
         });
     }

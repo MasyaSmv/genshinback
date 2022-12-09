@@ -11,9 +11,9 @@ class CreateCharacterSkillBurstTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('character_skill_burst', function (Blueprint $table) {
+        Schema::create('character_skill_bursts', static function (Blueprint $table) {
             $table->id();
             $table->integer('character_id');
             $table->string('name');
@@ -40,8 +40,8 @@ class CreateCharacterSkillBurstTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('character_skill_burst');
+        Schema::dropIfExists('character_skill_bursts');
     }
 }

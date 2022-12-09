@@ -11,9 +11,9 @@ class CreateCharacterAscensionTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('character_ascension', function (Blueprint $table) {
+        Schema::create('character_ascensions', static function (Blueprint $table) {
             $table->id();
             $table->integer('character_id');
             $table->integer('ascension');
@@ -22,6 +22,7 @@ class CreateCharacterAscensionTable extends Migration
             $table->integer('first_material_id')->nullable();
             $table->integer('second_material_id')->nullable();
             $table->integer('third_material_id')->nullable();
+            $table->integer('fourth_material_id')->nullable();
         });
     }
 
@@ -30,8 +31,8 @@ class CreateCharacterAscensionTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('character_ascension');
+        Schema::dropIfExists('character_ascensions');
     }
 }

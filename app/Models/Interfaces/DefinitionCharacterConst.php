@@ -9,10 +9,12 @@ interface DefinitionCharacterConst
 {
     public const MALE = 1;
     public const FEMALE = 2;
+    public const TRAVELER = 3;
 
     public const GENDER = [
         self::MALE,
         self::FEMALE,
+        self::TRAVELER,
     ];
 
     public const CRYO = 1;
